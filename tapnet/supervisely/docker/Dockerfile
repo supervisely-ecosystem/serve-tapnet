@@ -16,6 +16,7 @@ RUN pip3 install -r requirements.txt
 WORKDIR /
 
 RUN pip3 install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-RUN pip3 install jaxlib==0.3.25
 
 RUN pip3 install supervisely==6.72.3
+
+COPY evaluation_datasets.py /tapnet/
