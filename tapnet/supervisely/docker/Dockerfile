@@ -13,6 +13,7 @@ RUN export PYTHONPATH=`(cd ../ && pwd)`:`pwd`:$PYTHONPATH
 WORKDIR tapnet
 RUN git clone https://github.com/google-research/kubric.git
 RUN pip3 install -r requirements.txt
+RUN pip3 install jax==0.4.7
 WORKDIR /
 
 RUN pip3 install supervisely==6.72.3
