@@ -20,7 +20,7 @@
 
 # Overview
 
-This app is an integration of TAP-Net model, which is a NN-assisted interactive object tracking model. The TAP-Net model can track point trajectories. It is used to implement the tracking of polygons, points and rectangles on videos.
+This app is an integration of TAP-Net model, which is a NN-assisted interactive object tracking model. The TAP-Net model can track point trajectories. It is used to implement the tracking of polygons, points and graphs (keypoints) on videos.
 
 # How to Run
 
