@@ -61,6 +61,21 @@ class TrackerContainer:
             frame_end = self.frames_indexes[-1] if self.direction == "forward" else self.frame_index
             if isinstance(geometry, sly.Rectangle):
                 points, rect_w, rect_h = f.geometry_to_np(geometry)
+            elif isinstance(geometry, sly.GraphNodes):
+                points, node_ids = f.geometry_to_np(geometry)
+                video_info = self.api.video.get_info_by_id(self.video_id)
+                project_id = video_info.project_id
+                project_meta_json = self.api.project.get_meta(project_id)
+                object_info = self.api.video.object.get_info_by_id(object_id)
+                class_id = object_info.class_id
+                for cls in project_meta_json["classes"]:
+                    if cls["id"] == class_id:
+                        geometry_config = cls["geometry_config"]
+                        break
+                labels = []
+                for node_id in node_ids:
+                    label = geometry_config["nodes"][node_id]["label"]
+                    labels.append(label)
             else:
                 points = f.geometry_to_np(geometry)
             # input data must consist of points with (time, height, width) order
@@ -79,13 +94,21 @@ class TrackerContainer:
                     new_figure = f.np_to_geometry(
                         new_points, geometry.geometry_name(), rect_w, rect_h
                     )
+                elif isinstance(geometry, sly.GraphNodes):
+                    new_figure = f.np_to_geometry(
+                        points=new_points, geom_type=geometry.geometry_name(), labels=labels
+                    )
                 else:
                     new_figure = f.np_to_geometry(new_points, geometry.geometry_name())
+                if isinstance(geometry, sly.GraphNodes):
+                    new_figure_json = f.get_graph_json(new_points, geometry_config)
+                else:
+                    new_figure_json = new_figure.to_json()
                 self.api.video.figure.create(
                     self.video_id,
                     object_id,
                     frame_index,
-                    new_figure.to_json(),
+                    new_figure_json,
                     new_figure.geometry_name(),
                     self.track_id,
                 )
