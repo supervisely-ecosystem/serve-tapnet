@@ -32,7 +32,7 @@ This app is an integration of TAP-Net model, which is a NN-assisted interactive 
 
 3. Press `Track` button
 
-vid
+https://github.com/supervisely-ecosystem/serve-tapnet/assets/115161827/2ef6b5bd-3473-4df6-bf7d-33539377c429
 
 4. After finishing working with the app, stop the app session manually in the `App sessions` tab
 
