@@ -1,5 +1,5 @@
 import functools
-
+import os
 import sly_globals as g
 import supervisely as sly
 
@@ -46,6 +46,7 @@ def track(api: sly.Api, task_id, context, state, app_logger):
 
 def main():
     if len(tf.config.list_physical_devices("GPU")) > 0 or sly.is_development():
+        os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"
         sly.logger.info("🟩 Model has been successfully deployed")
 
         sly.logger.info(

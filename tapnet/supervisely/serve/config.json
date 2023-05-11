@@ -1,7 +1,6 @@
 {
     "name": "TAP-Net object tracking",
     "type": "app",
-    "version": "2.0.0",
     "icon": "https://github.com/supervisely-ecosystem/serve-tapnet/assets/115161827/4d2892fd-f924-428f-9c44-a0f603b09125",
     "icon_cover": true,
     "poster": "https://github.com/supervisely-ecosystem/serve-tapnet/assets/115161827/967a413a-afb9-4051-afe7-ff740bea1bf5",

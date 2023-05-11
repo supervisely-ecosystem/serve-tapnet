@@ -34,8 +34,6 @@ def _construct_shared_modules(config) -> Mapping[str, task.SharedModule]:
     return shared_modules
 
 
-if sly.is_production():
-    tf.config.experimental.set_visible_devices([], "GPU")
 config = get_config().experiment_kwargs.config
 point_prediction = SupervisedPointPrediction(config, **config.supervised_point_prediction_kwargs)
 
@@ -55,6 +53,12 @@ def run_model(input_video_path, frame_start, frame_end, query_points, direction)
     Returns:
     A np.array of tracked points
     """
+    if sly.is_production():
+        tf.config.experimental.set_visible_devices([], "GPU")
+        gpus = tf.config.list_physical_devices("GPU")
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+
     transform = hk.transform_with_state(forward)
     forward_fn = transform.apply
     jaxline_mode = "eval_inference"
