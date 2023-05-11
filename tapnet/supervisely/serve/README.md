@@ -1,7 +1,7 @@
 <div align="center" markdown>
 <img src="https://github.com/supervisely-ecosystem/serve-tapnet/assets/115161827/967a413a-afb9-4051-afe7-ff740bea1bf5" />
   
-# Serve TAP-Net
+# TAP-Net object tracking
 
 <p align="center">
   <a href="#Overview">Overview</a> •
@@ -11,7 +11,7 @@
 
 [![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervise.ly/apps/supervisely-ecosystem/serve-tapnet/tapnet/supervisely/serve)
 [![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervise.ly/slack)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/serve-tapnet/tapnet/supervisely/serve)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/serve-tapnet)
 [![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/pips/supervisely/serve-tapnet/tapnet/supervisely/serve)](https://supervise.ly)
 [![runs](https://app.supervise.ly/img/badges/runs/supervisely-ecosystem/pips/supervisely/serve-tapnet/tapnet/supervisely/serve)](https://supervise.ly)
 
