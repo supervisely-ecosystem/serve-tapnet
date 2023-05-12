@@ -15,6 +15,8 @@ def send_error_data(func):
         try:
             value = func(*args, **kwargs)
         except Exception as e:
+            print("An error occured! See details below:")
+            print(e)
             track_id = kwargs["context"]["trackId"]
             api = kwargs["api"]
             api.post(
