@@ -127,16 +127,15 @@ def geometry_to_np(figure: Geometry):
         return figure.exterior_np[:, ::-1].copy()
     if isinstance(figure, sly.GraphNodes):
         nodes = figure.nodes  # dict (str - sly.Node)
-        node_ids = [id for id in nodes.keys()]  # [str]
         nodes = [node for node in nodes.values()]  # [sly.Node]
         point_locations = [node.location for node in nodes]  # [sly.Pointlocation]
         points = [[pl.col, pl.row] for pl in point_locations]  # [[x, y]]
-        return np.array(points), node_ids
+        return np.array(points)
     raise ValueError(f"Can't process figures with type `{figure.geometry_name()}`")
 
 
 def np_to_geometry(
-    points: np.ndarray, geom_type: str, rect_w: int = None, rect_h: int = None, labels: list = None
+    points: np.ndarray, geom_type: str, rect_w: int = None, rect_h: int = None
 ) -> Geometry:
     if geom_type == "rectangle":
         center_x, center_y = points.squeeze().astype(int)
@@ -153,12 +152,6 @@ def np_to_geometry(
         obj = points.astype(int)[:, ::-1]
         exterior = [sly.PointLocation(*obj_point) for obj_point in obj]
         return sly.Polygon(exterior=exterior)
-    if geom_type == "graph":
-        nodes = []
-        for i, (point, label) in enumerate(zip(points, labels)):
-            col, row = point
-            nodes.append(sly.Node(label=label, row=row, col=col))
-        return sly.GraphNodes(nodes)
     raise ValueError(f"Can't process figures with type `{geom_type}`")
 
 
