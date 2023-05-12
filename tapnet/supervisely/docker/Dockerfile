@@ -1,4 +1,4 @@
-FROM supervisely/base-py-sdk:6.72.3
+FROM supervisely/base-py-sdk:6.72.8
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
@@ -16,6 +16,6 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install jax==0.4.7
 WORKDIR /
 
-RUN pip3 install supervisely==6.72.3
+RUN pip3 install supervisely==6.72.8
 
 COPY evaluation_datasets.py /tapnet/
