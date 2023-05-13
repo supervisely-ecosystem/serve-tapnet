@@ -54,7 +54,7 @@ class TrackerContainer:
         return save_video_path
 
     def track(self):
-        for object_id, geometry in zip(self.object_ids, self.geometries):
+        for pos, (object_id, geometry) in enumerate(zip(self.object_ids, self.geometries), start=1):
             frame_start = (
                 self.frame_index if self.direction == "forward" else self.frames_indexes[-1]
             )
@@ -80,12 +80,12 @@ class TrackerContainer:
                 input_data.append([0, point[1], point[0]])
             input_data = np.array(input_data).astype(np.int32)
             tracked_points, input_height, input_width = f.run_model(
-                self.video_path, frame_start, frame_end, input_data, self.direction
+                self.video_path, frame_start, frame_end + 1, input_data, self.direction
             )
             tracked_points = f.check_bounds(tracked_points, input_height, input_width)
             for i in range(self.frames_count):
                 frame_index = self.frames_indexes[i + 1]
-                new_points = tracked_points[:, i]
+                new_points = tracked_points[:, i + 1]
                 if isinstance(geometry, sly.Rectangle):
                     new_figure = f.np_to_geometry(
                         new_points, geometry.geometry_name(), rect_w, rect_h
@@ -106,7 +106,7 @@ class TrackerContainer:
                     geometry_name,
                     self.track_id,
                 )
-                cur_pos = i + frame_start + 1
+                cur_pos = i + 1 + (pos - 1) * self.frames_count
                 stop = self._notify(cur_pos)
                 if stop:
                     self.logger.info("Task stoped by user")
