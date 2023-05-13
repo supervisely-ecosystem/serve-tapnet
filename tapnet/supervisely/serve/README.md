@@ -36,6 +36,19 @@ https://user-images.githubusercontent.com/115161827/237701946-2ef6b5bd-3473-4df6
 
 4. After finishing working with the app, stop the app session manually in the `App sessions` tab
 
+# Keypoints tracking example
+
+You can also use this app to track keypoints. This app can track keypoints graph of any shape and number of points.
+
+1. Open your video project, select suitable frame and click on "Screenshot" button in the upper right corner:
+
+https://user-images.githubusercontent.com/91027877/238152827-1a6fcc7b-7d68-4168-86af-7406d6255d9c.mp4
+
+
+
+
+
+
 # Acknowledgment
 
 This app is based on the great work `TAP-Net` 
