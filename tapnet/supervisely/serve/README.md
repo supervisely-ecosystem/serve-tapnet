@@ -45,6 +45,11 @@ You can also use this app to track keypoints. This app can track keypoints graph
 https://user-images.githubusercontent.com/91027877/238152827-1a6fcc7b-7d68-4168-86af-7406d6255d9c.mp4
 
 
+2. Create keypoints class based on your screenshot:
+
+https://user-images.githubusercontent.com/91027877/238153794-43870be8-37bd-434a-bdf7-536da5267602.mp4
+
+
 
 
 
