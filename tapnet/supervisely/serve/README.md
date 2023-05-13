@@ -36,7 +36,7 @@ https://user-images.githubusercontent.com/115161827/237701946-2ef6b5bd-3473-4df6
 
 4. After finishing working with the app, stop the app session manually in the `App sessions` tab
 
-# Keypoints tracking example
+# Example: tracking keypoints of a bird using TAP-Net
 
 You can also use this app to track keypoints. This app can track keypoints graph of any shape and number of points.
 
