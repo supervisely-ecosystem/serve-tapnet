@@ -49,6 +49,10 @@ https://user-images.githubusercontent.com/91027877/238152827-1a6fcc7b-7d68-4168-
 
 https://user-images.githubusercontent.com/91027877/238153794-43870be8-37bd-434a-bdf7-536da5267602.mp4
 
+3. Go back to video, set your recently created keypoints graph on target object, select number of frames to be tracked and click on "Track" button:
+
+https://user-images.githubusercontent.com/91027877/238153954-6364579b-2dff-49c4-b4da-35d4ea0e9ce9.mp4
+
 
 
 
