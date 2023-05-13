@@ -6,7 +6,7 @@
 <p align="center">
   <a href="#Overview">Overview</a> •
   <a href="#How-To-Run">How To Run</a> •
-  <a href="#Example:-tracking-keypoints-of-a-bird-using-TAP-Net">Example: tracking keypoints of a bird using TAP-Net</a> •
+  <a href="#example-tracking-keypoints-of-a-bird-using-tap-net">Example: tracking keypoints of a bird using TAP-Net</a> •
   <a href="#Acknowledgment">Acknowledgment</a>
 </p>
 
