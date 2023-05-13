@@ -54,8 +54,9 @@ https://user-images.githubusercontent.com/91027877/238153794-43870be8-37bd-434a-
 https://user-images.githubusercontent.com/91027877/238153954-6364579b-2dff-49c4-b4da-35d4ea0e9ce9.mp4
 
 
+You can change visualization settings of your keypoints graph in right sidebar:
 
-
+https://user-images.githubusercontent.com/91027877/238154341-ed9acea5-2693-421d-a673-a6f4ab8f515a.mp4
 
 
 # Acknowledgment
