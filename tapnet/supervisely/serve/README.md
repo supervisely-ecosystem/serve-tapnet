@@ -13,8 +13,8 @@
 [![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervise.ly/apps/supervisely-ecosystem/serve-tapnet/tapnet/supervisely/serve)
 [![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervise.ly/slack)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/serve-tapnet)
-[![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/pips/supervisely/serve-tapnet/tapnet/supervisely/serve)](https://supervise.ly)
-[![runs](https://app.supervise.ly/img/badges/runs/supervisely-ecosystem/pips/supervisely/serve-tapnet/tapnet/supervisely/serve)](https://supervise.ly)
+[![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/serve-tapnet/tapnet/supervisely/serve.png)](https://supervise.ly)
+[![runs](https://app.supervise.ly/img/badges/runs/supervisely-ecosystem/serve-tapnet/tapnet/supervisely/serve.png)](https://supervise.ly)
 
 
 </div>
