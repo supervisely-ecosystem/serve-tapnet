@@ -54,10 +54,9 @@ def run_model(input_video_path, frame_start, frame_end, query_points, direction)
     A np.array of tracked points
     """
     if sly.is_production():
-        tf.config.experimental.set_visible_devices([], "GPU")
-        gpus = tf.config.list_physical_devices("GPU")
-        for gpu in gpus:
-            tf.config.experimental.set_memory_growth(gpu, True)
+        gpus = tf.config.experimental.list_physical_devices("GPU")
+        tf.config.experimental.set_visible_devices(gpus[0], "GPU")
+        tf.config.experimental.set_memory_growth(gpus[0], True)
 
     transform = hk.transform_with_state(forward)
     forward_fn = transform.apply
