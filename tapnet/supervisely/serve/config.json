@@ -25,6 +25,7 @@
     "allowed_shapes": [
         "polygon",
         "point",
-        "graph"
+        "graph",
+        "line"
     ]
 }
