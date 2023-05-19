@@ -130,6 +130,9 @@ def geometry_to_np(figure: Geometry):
         point_locations = [node.location for node in nodes]  # [sly.Pointlocation]
         points = [[pl.col, pl.row] for pl in point_locations]  # [[x, y]]
         return np.array(points)
+    if isinstance(figure, sly.Polyline):
+        points = figure.exterior_np
+        return points
     raise ValueError(f"Can't process figures with type `{figure.geometry_name()}`")
 
 
@@ -151,6 +154,8 @@ def np_to_geometry(
         obj = points.astype(int)[:, ::-1]
         exterior = [sly.PointLocation(*obj_point) for obj_point in obj]
         return sly.Polygon(exterior=exterior)
+    if geom_type == "line":
+        return sly.Polyline(points.tolist())
     raise ValueError(f"Can't process figures with type `{geom_type}`")
 
 
