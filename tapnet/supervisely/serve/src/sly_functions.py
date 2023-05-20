@@ -83,7 +83,7 @@ def run_model(frames, frame_start, frame_end, query_points, direction):
     height_scaler, width_scaler = input_height / resize_height, input_width / resize_width
     query_points[:, 1] = query_points[:, 1] / height_scaler
     query_points[:, 2] = query_points[:, 2] / width_scaler
-    num_frames = frame_end - frame_start
+    num_frames = frame_end - frame_start + 1
     video = media.resize_video(video, (resize_height, resize_width))
     video = video.astype(np.float32) / 255 * 2 - 1
     num_points = len(query_points)
@@ -131,6 +131,7 @@ def geometry_to_np(figure: Geometry):
         return np.array(points)
     if isinstance(figure, sly.Polyline):
         points = figure.exterior_np
+        points = np.flip(points, axis=1)
         return points
     raise ValueError(f"Can't process figures with type `{figure.geometry_name()}`")
 
@@ -154,6 +155,7 @@ def np_to_geometry(
         exterior = [sly.PointLocation(*obj_point) for obj_point in obj]
         return sly.Polygon(exterior=exterior)
     if geom_type == "line":
+        points = np.flip(points, axis=1)
         return sly.Polyline(points.tolist())
     raise ValueError(f"Can't process figures with type `{geom_type}`")
 
