@@ -24,7 +24,7 @@ class TrackerContainer:
 
         self.add_geometries()
         self.add_frames_indexes()
-        self.video_path = self.download_video()
+        self.load_frames()
 
         self.logger.info("TrackerController Initialized")
 
@@ -42,16 +42,12 @@ class TrackerContainer:
             self.frames_indexes.append(cur_index)
             cur_index += 1 if self.direction == "forward" else -1
 
-    def download_video(self):
-        video_info = self.api.video.get_info_by_id(self.video_id)
-        video_filename = video_info.name
-        save_video_path = os.path.join(g.save_video_dir, video_filename)
-        if not sly.fs.file_exists(save_video_path):
-            self.api.video.download_path(
-                id=self.video_id,
-                path=save_video_path,
-            )
-        return save_video_path
+    def load_frames(self):
+        rgbs = []
+        for frame_index in self.frames_indexes:
+            img_rgb = self.api.video.frame.download_np(self.video_id, frame_index)
+            rgbs.append(img_rgb)
+        self.frames = np.stack(rgbs)
 
     def track(self):
         for pos, (object_id, geometry) in enumerate(zip(self.object_ids, self.geometries), start=1):
@@ -80,7 +76,7 @@ class TrackerContainer:
                 input_data.append([0, point[1], point[0]])
             input_data = np.array(input_data).astype(np.int32)
             tracked_points, input_height, input_width = f.run_model(
-                self.video_path, frame_start, frame_end + 1, input_data, self.direction
+                self.frames, frame_start, frame_end + 1, input_data, self.direction
             )
             tracked_points = f.check_bounds(tracked_points, input_height, input_width)
             for i in range(self.frames_count):
