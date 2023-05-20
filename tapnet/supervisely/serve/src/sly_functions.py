@@ -48,7 +48,7 @@ def forward(*args, **kwargs):
     )
 
 
-def run_model(input_video_path, frame_start, frame_end, query_points, direction):
+def run_model(frames, frame_start, frame_end, query_points, direction):
     """Reads input video with query points and applies model to input data
     Returns:
     A np.array of tracked points
@@ -76,8 +76,7 @@ def run_model(input_video_path, frame_start, frame_end, query_points, direction)
     config_inference.resize_height = 256
     config_inference.resize_width = 256
     resize_height, resize_width = config_inference.resize_height, config_inference.resize_width
-    video = media.read_video(input_video_path)
-    video = video[frame_start:frame_end]
+    video = frames
     if direction == "backward":
         video = video[::-1]
     input_height, input_width = video.shape[1], video.shape[2]
