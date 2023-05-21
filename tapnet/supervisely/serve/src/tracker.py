@@ -87,7 +87,7 @@ class TrackerContainer:
             )
             tracked_points = f.check_bounds(tracked_points, input_height, input_width)
 
-            figure_pbar_unit = self.second_part / self.frames_count
+            figure_pbar_unit = (self.second_part / self.frames_count) / len(self.object_ids)
 
             for i in range(self.frames_count):
                 frame_index = self.frames_indexes[i + 1]
