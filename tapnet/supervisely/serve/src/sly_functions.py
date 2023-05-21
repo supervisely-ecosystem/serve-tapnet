@@ -174,3 +174,27 @@ def get_graph_json(new_points, geometry_config):
         graph_json["nodes"][node]["loc"] = [int(col), int(row)]
         i += 1
     return graph_json
+
+
+def clip_coordinates(coordinates, video_height, video_width, max_diff_pct=2):
+    height_limit = round(video_height * (max_diff_pct / 100))
+    width_limit = round(video_width * (max_diff_pct / 100))
+    x_coordinates = coordinates[:, 0]
+    y_coordinates = coordinates[:, 1]
+    for i in range(1, len(coordinates)):
+        difference = x_coordinates[i] - x_coordinates[i - 1]
+        if abs(difference) > width_limit:
+            if difference < 0:
+                x_coordinates[i] = x_coordinates[i - 1] - width_limit
+            else:
+                x_coordinates[i] = x_coordinates[i - 1] + width_limit
+    for i in range(1, len(coordinates)):
+        difference = y_coordinates[i] - y_coordinates[i - 1]
+        if abs(difference) > height_limit:
+            if difference < 0:
+                y_coordinates[i] = y_coordinates[i - 1] - height_limit
+            else:
+                y_coordinates[i] = y_coordinates[i - 1] + height_limit
+    coordinates[:, 0] = x_coordinates
+    coordinates[:, 1] = y_coordinates
+    return coordinates
