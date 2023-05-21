@@ -176,7 +176,7 @@ def get_graph_json(new_points, geometry_config):
     return graph_json
 
 
-def clip_coordinates(coordinates, video_height, video_width, max_diff_pct=2):
+def clip_coordinates(coordinates, video_height, video_width, max_diff_pct=1):
     height_limit = round(video_height * (max_diff_pct / 100))
     width_limit = round(video_width * (max_diff_pct / 100))
     x_coordinates = coordinates[:, 0]
