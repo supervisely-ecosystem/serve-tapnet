@@ -90,7 +90,7 @@ class TrackerContainer:
                 point_batch = f.clip_coordinates(point_batch, input_height, input_width)
                 tracked_points[i] = point_batch
 
-            figure_pbar_unit = self.second_part / self.frames_count
+            figure_pbar_unit = (self.second_part / self.frames_count) / len(self.object_ids)
 
             for i in range(self.frames_count):
                 frame_index = self.frames_indexes[i + 1]
