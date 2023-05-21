@@ -19,6 +19,10 @@ class TrackerContainer:
         self.direction = context["direction"]
         self.stop = len(self.object_ids) * self.frames_count
 
+        self.pbar_value = 0
+        self.first_part = round(self.stop * 0.5)
+        self.second_part = self.stop - self.first_part
+
         self.geometries = []
         self.frames_indexes = []
 
@@ -43,10 +47,13 @@ class TrackerContainer:
             cur_index += 1 if self.direction == "forward" else -1
 
     def load_frames(self):
+        frame_pbar_unit = self.first_part / len(self.frames_indexes)
         rgbs = []
         for frame_index in self.frames_indexes:
+            self.pbar_value += frame_pbar_unit
             img_rgb = self.api.video.frame.download_np(self.video_id, frame_index)
             rgbs.append(img_rgb)
+            self._notify(self.pbar_value)
         self.frames = np.stack(rgbs)
 
     def track(self):
@@ -79,6 +86,9 @@ class TrackerContainer:
                 self.frames, frame_start, frame_end + 1, input_data, self.direction
             )
             tracked_points = f.check_bounds(tracked_points, input_height, input_width)
+
+            figure_pbar_unit = self.second_part / self.frames_count
+
             for i in range(self.frames_count):
                 frame_index = self.frames_indexes[i + 1]
                 new_points = tracked_points[:, i + 1]
@@ -102,8 +112,8 @@ class TrackerContainer:
                     geometry_name,
                     self.track_id,
                 )
-                cur_pos = i + 1 + (pos - 1) * self.frames_count
-                stop = self._notify(cur_pos)
+                self.pbar_value += figure_pbar_unit
+                stop = self._notify(self.pbar_value)
                 if stop:
                     self.logger.info("Task stoped by user")
                     self._notify(self.stop)
