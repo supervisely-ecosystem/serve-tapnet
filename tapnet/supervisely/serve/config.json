@@ -27,5 +27,8 @@
         "point",
         "graph",
         "line"
-    ]
+    ],
+    "license": {
+      "type": "Apache-2.0" 
+    }
 }
