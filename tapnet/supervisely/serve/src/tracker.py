@@ -86,6 +86,9 @@ class TrackerContainer:
                 self.frames, frame_start, frame_end + 1, input_data, self.direction
             )
             tracked_points = f.check_bounds(tracked_points, input_height, input_width)
+            for i, point_batch in enumerate(tracked_points):
+                point_batch = f.clip_coordinates(point_batch, input_height, input_width)
+                tracked_points[i] = point_batch
 
             figure_pbar_unit = (self.second_part / self.frames_count) / len(self.object_ids)
 
