@@ -10,7 +10,7 @@
         "detection & tracking",
         "serve"
     ],
-    "description": "serve and use in videos annotator",
+    "description": "Track points and polygons on videos",
     "docker_image": "supervisely/tapnet:1.0.5",
     "main_script": "tapnet/supervisely/serve/src/main.py",
     "task_location": "application_sessions",
