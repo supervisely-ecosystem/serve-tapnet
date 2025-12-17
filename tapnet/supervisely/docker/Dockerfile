@@ -16,6 +16,8 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install jax==0.4.7
 WORKDIR /
 
-RUN pip3 install supervisely==6.72.8
+RUN pip3 install supervisely==6.73.486
 
 COPY evaluation_datasets.py /tapnet/
+
+LABEL python_sdk_version="6.73.486"
