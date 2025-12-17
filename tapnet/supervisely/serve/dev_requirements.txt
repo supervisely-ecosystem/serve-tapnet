@@ -1,4 +1,4 @@
-supervisely==6.72.8
+supervisely==6.73.486
 absl-py~=1.2.0
 ml-collections~=0.1.1
 matplot~=0.1.9
