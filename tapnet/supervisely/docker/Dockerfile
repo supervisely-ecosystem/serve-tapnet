@@ -47,7 +47,7 @@ RUN pip3 install --no-cache-dir absl-py~=1.2.0 \
     tensorflow_datasets~=4.6.0 \
     tensorflow_graphics~=2021.12.3 \
     typing_extensions~=4.3.0 \
-    einshape @ git+https://github.com/deepmind/einshape \
+    git+https://github.com/deepmind/einshape \
     jax==0.4.7 \
     jaxlib==0.4.7
 
